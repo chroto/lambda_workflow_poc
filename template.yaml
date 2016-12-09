@@ -4,31 +4,29 @@ Description: >-
   An Amazon S3 trigger that retrieves metadata for the object that has been
   updated.
 Resources:
-  s3getobjectpython:
+  TimeFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      Handler: lambda_function.lambda_handler
-      Runtime: python2.7
+      Handler: index.handler
+      Runtime: nodejs4.3
       CodeUri: .
       Description: >-
-        An Amazon S3 trigger that retrieves metadata for the object that has
-        been updated.
+        Outputs the time
       MemorySize: 128
       Timeout: 3
-      Policies:
-        - Version: '2012-10-17'
-          Statement:
-            - Effect: Allow
-              Action:
-                - 's3:GetObject'
-              Resource: 'arn:aws:s3:::*'
+      Envionment:
+          Variables:
+              TIME_ZONE: !Ref timeZoneParam
+              ENVIRO: !Ref enviro
       Events:
-        BucketEvent1:
-          Type: S3
-          Properties:
-            Bucket:
-              Ref: Bucket1
-            Events:
-              - 's3:ObjectCreated:*'
-  Bucket1:
-    Type: 'AWS::S3::Bucket'
+          MyTimeApi:
+              Type: Api
+              Properties:
+                  Path: /TimeResource
+                  Method: GET
+
+Parameters:
+    timeZoneParam:
+        Type: string
+    enviro:
+        Type: string

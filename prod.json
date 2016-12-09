@@ -1,0 +1,6 @@
+{
+  "Parameters": {
+    "timeZoneParam": "America/Denver",
+    "enviro": "prod"
+  }
+}
