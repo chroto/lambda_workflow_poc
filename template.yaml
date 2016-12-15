@@ -14,7 +14,7 @@ Resources:
         Outputs the time
       MemorySize: 128
       Timeout: 3
-      Envionment:
+      Environment:
           Variables:
               TIME_ZONE: !Ref timeZoneParam
               ENVIRO: !Ref enviro
