@@ -27,6 +27,6 @@ Resources:
 
 Parameters:
     timeZoneParam:
-        Type: string
+        Type: String
     enviro:
-        Type: string
+        Type: String
